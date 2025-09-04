@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Python scraper
         run: |
-          python storage_function.py  # your script name
+          python scrape_env.py  # your script name
 
       - name: Upload CSV artifacts
         uses: actions/upload-artifact@v3
