@@ -133,7 +133,7 @@ def check_insurance(page, reg_number: str) -> dict:
         return data
 
 def main():
-    df = pd.read_csv('data_chunks\chunk_1.csv')
+    df = pd.read_csv('data_chunks/chunk_1.csv')
     df['Car Registration'] = df['Car Registration'].astype(str).str.strip()
 
     results_list = []
@@ -153,10 +153,15 @@ def main():
 
     results_df = pd.DataFrame(results_list)
     df = pd.concat([df, results_df[["status", "Start Date", "End Date", "Transacting Company"]]], axis=1)
-    df.to_csv("data_with_new_cols.csv", index=False)
+
+    from datetime import datetime
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_filename = f"data_with_new_cols_{timestamp}.csv"
+    df.to_csv(output_filename, index=False)
 
     print("Scraping complete!")
 
 if __name__ == "__main__":
 
     main()                                                                                                                                                   
+
