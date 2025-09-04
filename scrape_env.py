@@ -133,7 +133,7 @@ def check_insurance(page, reg_number: str) -> dict:
         return data
 
 def main():
-    df = pd.read_csv(r'C:\Users\USER\Desktop\data_chunks\chunk_1.csv')
+    df = pd.read_csv('data_chunks\chunk_1.csv')
     df['Car Registration'] = df['Car Registration'].astype(str).str.strip()
 
     results_list = []
@@ -153,9 +153,10 @@ def main():
 
     results_df = pd.DataFrame(results_list)
     df = pd.concat([df, results_df[["status", "Start Date", "End Date", "Transacting Company"]]], axis=1)
-    df.to_csv(r"Desktop\data_with_new_cols.csv", index=False)
+    df.to_csv("data_with_new_cols.csv", index=False)
 
     print("Scraping complete!")
 
 if __name__ == "__main__":
+
     main()                                                                                                                                                   
