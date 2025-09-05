@@ -133,7 +133,7 @@ def check_insurance(page, reg_number: str) -> dict:
         return data
 
 def main():
-    df = pd.read_csv('data_chunks/chunk_5.csv')
+    df = pd.read_csv('data_chunks/chunk_6.csv')
     df['Car Registration'] = df['Car Registration'].astype(str).str.strip()
 
     results_list = []
@@ -164,6 +164,7 @@ def main():
 if __name__ == "__main__":
 
     main()                                                                                                                                                   
+
 
 
 
