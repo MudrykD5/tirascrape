@@ -1,10 +1,11 @@
-name: Run Tira Scraper
+name: Run Ira
 
 on:
-  workflow_dispatch:  # manual trigger
+  workflow_dispatch:   # manual trigger
+  
 
 jobs:
-  scrape_insurance:
+  insurance_reminder:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,15 +19,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pandas playwright
+          pip install -r requirements.txt
           playwright install chromium
 
-      - name: Run Python scraper
+      - name: Run unified reminder script
+        env:
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          NEXTSMS_API_KEY: ${{ secrets.NEXTSMS_API_KEY }}
         run: |
-          python scrape_env.py  # your script name
-
-      - name: Upload CSV artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: processed-csv
-          path: "*.csv"  # uploads all CSVs in repo/workspace
+          ira_reminder.py   
