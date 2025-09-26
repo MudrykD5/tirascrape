@@ -1,0 +1,5 @@
+supabase
+requests
+python-dotenv
+pandas
+playwright
