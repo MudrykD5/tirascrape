@@ -27,4 +27,4 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           NEXTSMS_API_KEY: ${{ secrets.NEXTSMS_API_KEY }}
         run: |
-          ira_reminder.py   
+          python ira_reminder.py   
