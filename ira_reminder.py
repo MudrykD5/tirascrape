@@ -75,10 +75,10 @@ def check_insurance(page, reg_number: str) -> dict:
     print(f'🥂checking insurance for {reg_number}')
     try:
         page.wait_for_selector("label[for='mat-radio-3-input']", timeout=15000)
-print('🥂radio button found')
+         print('🥂radio button found')
         try:
             page.locator("div.cdk-overlay-container").evaluate("el => el.style.display='none'")
-print('🥂overlay hidden)
+             print('🥂overlay hidden)
         except Exception as e:
             print(f'overlay hidden failed {e}')
         page.click("label[for='mat-radio-3-input']")
