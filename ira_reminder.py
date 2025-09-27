@@ -232,7 +232,7 @@ def handler():
                 # --- NEW CONNECTION: validate against TIRA MIS ---
                 tira_result = check_insurance(page, reg)
                 tira_expiry = tira_result.get("End Date")
-
+                print('tira result::;',tira_result,'tira expiry:',tira_expiry)
                 supabase_date = normalize_supabase_date(supabase_expiry) if supabase_expiry else None
                 tira_date = normalize_tira_date(tira_expiry) if tira_expiry else None
 
