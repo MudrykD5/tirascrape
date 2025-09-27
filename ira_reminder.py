@@ -72,18 +72,23 @@ def check_insurance(page, reg_number: str) -> dict:
         }
 
     data = {"plate": reg_number}
-
+    print(f'🥂checking insurance for {reg_number}')
     try:
         page.wait_for_selector("label[for='mat-radio-3-input']", timeout=15000)
+print('🥂radio button found')
         try:
             page.locator("div.cdk-overlay-container").evaluate("el => el.style.display='none'")
-        except Exception:
-            pass
+print('🥂overlay hidden)
+        except Exception as e:
+            print(f'overlay hidden failed {e}')
         page.click("label[for='mat-radio-3-input']")
         page.fill("input[placeholder='Enter Registration Number']", str(reg_number))
         page.click("button:has-text('VERIFY')")
+        print("✅ Submitted registration")
+
 
         dialog = wait_for_latest_dialog(page, timeout=15000)
+        print("✅ Dialog appeared")
 
         if dialog.locator(f"b:has-text('{STATUS_TEXTS['not_found']}')").is_visible():
             data.update({"status": "Not Found", "Start Date": None, "End Date": None, "Transacting Company": None})
