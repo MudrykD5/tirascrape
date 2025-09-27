@@ -133,6 +133,7 @@ def check_insurance(page, reg_number: str) -> dict:
         return data
 
     except Exception as e:
+        print(f'error checking insurance :{e}')
         data.update({"status": "Error", "Start Date": None, "End Date": None, "Transacting Company": None})
         return data
 
