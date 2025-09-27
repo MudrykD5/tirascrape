@@ -78,7 +78,7 @@ def check_insurance(page, reg_number: str) -> dict:
         print('🥂radio button found')
         try:
             page.locator("div.cdk-overlay-container").evaluate("el => el.style.display='none'")
-             print('🥂overlay hidden)
+            
         except Exception as e:
             print(f'overlay hidden failed {e}')
         page.click("label[for='mat-radio-3-input']")
